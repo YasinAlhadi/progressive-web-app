@@ -1,0 +1,26 @@
+{
+  "name": "pwa-app",
+  "version": "1.0.0",
+  "description": "progressive web app",
+  "main": "index.js",
+  "scripts": {
+    "backend": "npm run develop --prefix backend",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run client\"",
+    "setup": "cd backend && npm install && cd ../client && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YasinAlhadi/pwa-app.git"
+  },
+  "author": "Yasin Alhadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YasinAlhadi/pwa-app/issues"
+  },
+  "homepage": "https://github.com/YasinAlhadi/pwa-app#readme",
+  "dependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
