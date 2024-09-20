@@ -44,6 +44,7 @@ import Layout from '../layouts/Layout.astro';
   </style>
 
   <script>
+    import { login, user } from '../utils/auth';
     const form = document.getElementById('form') as HTMLFormElement;
 
     async function registerUser(event: Event) {
@@ -62,13 +63,13 @@ import Layout from '../layouts/Layout.astro';
 
       if (response.ok) {
         const responseData = await response.json();
-        localStorage.setItem('user', JSON.stringify(responseData.user));
-        localStorage.setItem('token', responseData.jwt);
+        login(responseData.jwt, JSON.stringify(responseData.user));
+        user.set(responseData.user.username);
         window.location.href = '/';
         // return response.json();
       } else {
         const error = await response.json();
-        alert(error.message);
+        alert(error.error.message);
       }
     }
 

@@ -1,0 +1,39 @@
+---
+import { isAuthenticated } from '../utils/auth';
+import Layout from '../layouts/Layout.astro';
+import { GET } from './api/products';
+import type Product from '../interfaces/products';
+import { Image } from 'astro:assets';
+
+const response = await GET(Astro);
+const products = await response.json();
+
+const imgUrl = `${import.meta.env.BASE_URL}`;
+---
+
+<Layout title="Home">
+  <h1>Home</h1>
+  <p>Welcome to the home page!</p>
+  <p>
+    {isAuthenticated ? 'You are authenticated' : 'You are not authenticated'}
+  </p>
+  <ul>
+    {
+      products.map((product: Product) => (
+        <li>
+          <h2>{product.attributes.title}</h2>
+          <p>{product.attributes.description}</p>
+          <p>{product.attributes.price}</p>
+          {product.attributes.image.data.map((image) => (
+            <Image
+              src={'http://localhost:1337' + image.attributes.url}
+              alt={product.attributes.title}
+              width={200}
+              height={200}
+            />
+          ))}
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
