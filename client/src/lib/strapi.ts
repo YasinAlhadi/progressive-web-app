@@ -1,7 +1,6 @@
 interface Props {
   endpoint: string;
   query?: Record<string, string>;
-  page?: string;
   wrappedByKey?: string;
   wrappedByList?: boolean;
 }
@@ -31,13 +30,6 @@ export default async function fetchApi<T>({
       url.searchParams.append(key, value);
     });
   }
-
-  // if (page) {
-  //   url.searchParams.append(`populate[${page}][populate]`, '*');
-  // } else {
-  //   url.searchParams.append('populate', '*');
-  // }
-
   const res = await fetch(url.toString());
   let data = await res.json();
 

@@ -1,78 +1,33 @@
 ---
 import { isAuthenticated, user } from '../utils/auth';
-console.log(user);
-
 ---
 
-<nav class="nav">
-  <div class="nav-left">
-    <div class="nav-left-logo">
-      <a href="/">
-        <img src="/logo.png" alt="Logo" />
-      </a>
+<header>
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-left-logo">
+        <a href="/">
+          <img src="/logo.png" alt="Logo" />
+        </a>
+      </div>
+      <div class="nav-left-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+      </div>
     </div>
-    <div class="nav-left-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
+    <div class="nav-right">
+      <div class="nav-right-links">
+        {
+          isAuthenticated ? (
+            <a href="/logout">Logout</a>
+          ) : (
+            <p>
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+            </p>
+          )
+        }
+      </div>
     </div>
-  </div>
-  <div class="nav-right">
-    <div class="nav-right-links">
-      {
-        isAuthenticated ? (
-          <a href="/logout">Logout</a>
-          <p>{user.get()}</p>
-        ) : (
-          <p>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-          </p>
-        )
-      }
-    </div>
-  </div>
-
-  <style>
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      background-color: #333;
-      color: white;
-    }
-
-    a {
-      font-size: large;
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover {
-      border-bottom: 2px solid white;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .nav-left-logo img {
-      width: 50px;
-    }
-
-    .nav-left-links a {
-      margin-right: 1rem;
-    }
-
-    .nav-right-links a {
-      margin-right: 1rem;
-    }
-
-    .nav-right-links p {
-        color: white;
-      margin-right: 1rem;
-    }
-  </style>
-</nav>
+  </nav>
+</header>

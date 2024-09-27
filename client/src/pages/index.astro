@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { GET } from './api/products';
 import type Product from '../interfaces/products';
 import { Image } from 'astro:assets';
+import ProductCard from '../components/ProductCard.astro';
 
 const response = await GET(Astro);
 const products = await response.json();
@@ -12,28 +13,27 @@ const imgUrl = `${import.meta.env.BASE_URL}`;
 ---
 
 <Layout title="Home">
-  <h1>Home</h1>
-  <p>Welcome to the home page!</p>
-  <p>
+  <div class="hero-section">
+    <h1><span>Y</span>as<span>S</span>tore</h1>
+    <p>Buy the best products at the best prices</p>
+  </div>
+
+  <!-- <p>
     {isAuthenticated ? 'You are authenticated' : 'You are not authenticated'}
-  </p>
-  <ul>
+  </p> -->
+  <div class="product-cards-container">
     {
       products.map((product: Product) => (
-        <li>
-          <h2>{product.attributes.title}</h2>
-          <p>{product.attributes.description}</p>
-          <p>{product.attributes.price}</p>
-          {product.attributes.image.data.map((image) => (
-            <Image
-              src={'http://localhost:1337' + image.attributes.url}
-              alt={product.attributes.title}
-              width={200}
-              height={200}
-            />
-          ))}
-        </li>
+        <ProductCard
+          image={
+            'http://localhost:1337' +
+            product.attributes.image.data[0].attributes.url
+          }
+          id={product.id}
+          title={product.attributes.title}
+          price={product.attributes.price}
+        />
       ))
     }
-  </ul>
+  </div>
 </Layout>

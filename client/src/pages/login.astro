@@ -63,6 +63,7 @@ import Layout from '../layouts/Layout.astro';
 
       if (response.ok) {
         const responseData = await response.json();
+
         login(responseData.jwt, JSON.stringify(responseData.user));
         user.set(responseData.user.username);
         window.location.href = '/';

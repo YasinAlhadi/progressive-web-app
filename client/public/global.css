@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* background-color: #f1f5f9; */
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+a {
+  font-size: large;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-left-logo img {
+  width: 50px;
+}
+
+.nav-left-links a {
+  margin-right: 1rem;
+}
+
+.nav-right-links a {
+  margin-right: 1rem;
+}
+
+.nav-right-links p {
+  color: white;
+  margin-right: 1rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+a {
+  font-size: large;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-left-logo img {
+  width: 50px;
+}
+
+.nav-left-links a {
+  margin-right: 1rem;
+}
+
+.nav-right-links a {
+  margin-right: 1rem;
+}
+
+.nav-right-links p {
+  color: white;
+  margin-right: 1rem;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.hero-section span {
+  font-size: 8rem;
+  font-weight: 700;
+  color: #05772b;
+}
+
+.hero-section p {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: -1rem;
+}
+
+.product-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+footer a {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a:hover {
+  color: #339c56;
+  border: none;
+}
+
+footer img {
+  width: 40px;
+  height: 40px;
+}

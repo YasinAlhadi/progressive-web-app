@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import '../styles/productCard.css';
+import { GET } from '../pages/api/products';
+
+const { image, title, price, id } = Astro.props;
+
+const response = await GET(Astro);
+const products = await response.json();
+
+// Add to cart
+function addToCart() {
+  const cart = [];
+  const product = { id, title, price, image };
+  cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+---
+
+<div class="product-cards-container">
+  <div class="product-card">
+    <div class="product-card-image">
+      <Image
+        src={image}
+        alt="Surface-Laptop-Go"
+        width={400}
+        height={300}
+        class={'product-card-image'}
+      />
+    </div>
+    <div class="product-card-title">
+      <a href={`product/${id}`}><h2>{title}</h2></a>
+      <div class="product-card-price"><p>{price} AED</p></div>
+      <div class="product-card-footer">
+        <button id="submit">
+          <img src="/images/shopping-catr.png" alt="cart" /> Add to cart</button
+        >
+      </div>
+    </div>
+  </div>
+</div>
